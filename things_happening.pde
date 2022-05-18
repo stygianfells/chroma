@@ -1,20 +1,38 @@
 
 void happen() {
 
-  color aah = #F53971;
-  Ring ring = new Ring(width/2, height/2, 100.0, aah);
-  Shard shard = new Shard();
-
+  sample.play();
   ring.show();
-  shard.show();
-  //megalistlol.add(new Bloom(width/2, height/2, 100.0, aah, 125));
 
-
-  for (int i=0; i<megalistlol.size(); i++) {
-    //megalistlol.get(i).show();
+  for (int i=0; i<megalist.size(); i++) {
+    //megalist.get(i).show();
+  }
+  
+  //int tempx, temps;
+  
+  fill(0, 200);
+  rect(0, height/2-60, width, 120);
+  
+  for(int i = 500; i < sample.bufferSize()-1; i+=30)  {
+    //tempx = 1; temps = (int) sample.left.get(i)*200;
+    //fill(0);
+    //circle(tempx, height/2, temps);
+    
+    stroke(255);
+    strokeWeight(7);
+    line(i, height/2-(sample.left.get(i)*200)/2, i, height/2+(sample.left.get(i)*200)/2);
+    //tempx = i; temps = (int) sample.left.get(i)*200;
   }
 }
 
-//why is my opacity not working
-//why the fuck is it telling me the show function doesn't exist even though it does and can be called from an obj
-//just not an element of the arraylist for whatever fucking reason????????? help
+
+void keyPressed(){
+  if ( key == 'm'|| key == 'M' ){
+    if ( sample.isMuted() ){
+      sample.unmute();
+    }
+    else{
+      sample.mute();
+    }
+  }
+}
